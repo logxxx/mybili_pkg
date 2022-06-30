@@ -11,13 +11,22 @@ var (
 	client *MysqlClient
 )
 
-func Init(cfg DBConfig) error {
-	var err error
-	client, err = NewMysqlClient(
+func NewClient(cfg DBConfig) (*MysqlClient, error) {
+	c, err := NewMysqlClient(
 		getDSN(cfg),
 		60,
 		30,
 		5*time.Second)
+	if err != nil {
+		return nil, err
+	}
+
+	return c, nil
+}
+
+func Init(cfg DBConfig) error {
+	var err error
+	client, err = NewClient(cfg)
 	if err != nil {
 		return err
 	}
