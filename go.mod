@@ -1,4 +1,4 @@
-module pkg.logxxx.com
+module github.com/logxxx/mybili_pkg
 
 go 1.16
 
