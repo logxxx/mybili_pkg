@@ -1,7 +1,7 @@
 package fileutil
 
 import (
-	"pkg.logxxx.com/utils/log"
+	"github.com/logxxx/mybili_pkg/utils/log"
 	"os"
 	"path/filepath"
 )

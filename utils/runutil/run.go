@@ -1,7 +1,7 @@
 package runutil
 
 import (
-	"pkg.logxxx.com/utils/log"
+	"github.com/logxxx/mybili_pkg/utils/log"
 	"runtime"
 )
 
