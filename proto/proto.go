@@ -2,7 +2,7 @@ package proto
 
 type ReportRequest struct {
 	UserID   string  `json:"user_id"`
-	UserType string  `json:"user_type"`
+	UserType int     `json:"user_type"`
 	Action   string  `json:"action"`
 	Payload  string  `json:"payload"`
 	Runtime  Runtime `json:"runtime"`
