@@ -1,9 +1,11 @@
 package proto
 
 type ReportRequest struct {
-	Action  string  `json:"action"`
-	Payload string  `json:"payload"`
-	Runtime Runtime `json:"runtime"`
+	UserID   string  `json:"user_id"`
+	UserType string  `json:"user_type"`
+	Action   string  `json:"action"`
+	Payload  string  `json:"payload"`
+	Runtime  Runtime `json:"runtime"`
 }
 
 type Runtime struct {
