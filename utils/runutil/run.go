@@ -1,8 +1,12 @@
 package runutil
 
 import (
+	"fmt"
 	"github.com/logxxx/mybili_pkg/utils/log"
+	"os"
+	"os/signal"
 	"runtime"
+	"syscall"
 )
 
 // 安全地执行goroutine。包装了recover()捕获异常
@@ -21,4 +25,22 @@ func RunSafe(fn func()) {
 
 		fn()
 	}()
+}
+
+func WaitForExit(closeFunc func()) {
+	doneChan := make(chan bool)
+	signalChan := make(chan os.Signal, 1)
+	signal.Notify(signalChan, syscall.SIGINT, syscall.SIGTERM)
+	for {
+		select {
+		case s := <-signalChan:
+			fmt.Printf("captured %v. exiting...\n", s)
+			if closeFunc != nil {
+				closeFunc()
+			}
+			close(doneChan)
+		case <-doneChan:
+			os.Exit(0)
+		}
+	}
 }
