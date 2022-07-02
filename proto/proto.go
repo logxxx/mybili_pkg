@@ -16,6 +16,7 @@ type Runtime struct {
 	PlatformVersion string `json:"platform_version"` //平台版本(比如6.1;7.1)
 	ClientVersion   string `json:"client_version"`   //客户端(b下载器)的版本
 	OS              string `json:"os"`
+	Arch            string `json:"arch"`
 }
 
 type ReportResponse struct {
