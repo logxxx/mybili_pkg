@@ -38,7 +38,7 @@ func GetOrCreateFile(fileDir, fileName string) (*os.File, int64, error) {
 		return file, fileInfo.Size(), nil
 	}
 
-	err = os.MkdirAll(fileDir, 777)
+	err = os.MkdirAll(fileDir, 0777)
 	if err != nil {
 		log.Errorf("getOrCreateFile MkdirAll err:%v dir:%v", err, fileDir)
 		return nil, 0, err
