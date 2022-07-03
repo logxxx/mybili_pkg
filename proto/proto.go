@@ -1,5 +1,9 @@
 package proto
 
+type UserAdviseRequest struct {
+	Content string `json:"content"`
+}
+
 type ReportRequest struct {
 	UserID   string  `json:"user_id"`
 	UserType int     `json:"user_type"`

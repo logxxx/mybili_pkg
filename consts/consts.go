@@ -5,4 +5,5 @@ const (
 	ActionDeleteTask string = "task:delete"
 	ActionStartup    string = "client:startup"
 	ActionShutdown   string = "client:shutdown"
+	ActionUserAdvise string = "user:advise"
 )
