@@ -32,7 +32,7 @@ func getValidPath(dir, fileNameWithExt string) (string, string) {
 	fileName := strings.TrimRight(fileNameWithExt, fileExt)
 	for {
 		i++
-		fileNameWithExt = fmt.Sprintf("%v_%v.%v", fileName, i, fileExt)
+		fileNameWithExt = fmt.Sprintf("%v_%v%v", fileName, i, fileExt)
 
 		if !HasFile(filepath.Join(dir, fileNameWithExt)) {
 			return dir, fileNameWithExt
