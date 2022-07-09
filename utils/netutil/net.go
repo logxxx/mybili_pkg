@@ -38,6 +38,23 @@ func HttpGetRaw(url string) (int, []byte, error) {
 	return httpResp.StatusCode, respBytes, nil
 }
 
+func HttpReqGet(req *http.Request, resp interface{}) (int, error) {
+	status, respBytes, err := HttpDo(req)
+	if err != nil {
+		return 0, err
+	}
+
+	if resp != nil {
+		err = json.Unmarshal(respBytes, resp)
+		if err != nil {
+			return 0, err
+		}
+	}
+
+	return status, nil
+
+}
+
 func HttpGet(url string, resp interface{}) (int, error) {
 
 	status, respBytes, err := HttpGetRaw(url)
