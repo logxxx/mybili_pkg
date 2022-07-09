@@ -7,6 +7,22 @@ import (
 	"net/http"
 )
 
+func HttpDo(req *http.Request) (int, []byte, error) {
+	httpResp, err := http.DefaultClient.Do(req)
+	if err != nil {
+		return 0, nil, err
+	}
+	defer httpResp.Body.Close()
+
+	respBytes, err := ioutil.ReadAll(httpResp.Body)
+	if err != nil {
+		return 0, nil, err
+	}
+
+	return httpResp.StatusCode, respBytes, nil
+
+}
+
 func HttpGetRaw(url string) (int, []byte, error) {
 	httpResp, err := http.Get(url)
 	if err != nil {
