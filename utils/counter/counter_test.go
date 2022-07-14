@@ -25,3 +25,14 @@ func TestCounter_Exist(t *testing.T) {
 	assert.True(t, resp3)
 
 }
+
+func TestEmptyCounter(t *testing.T) {
+
+	c := counter.EmptyCounter()
+	resp1 := c.IsExist(123)
+	t.Logf("resp1:%v", resp1)
+
+	err := c.Set("hello", "world", 10*time.Hour).Err()
+	t.Logf("err:%v", err)
+
+}

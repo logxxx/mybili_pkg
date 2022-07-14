@@ -18,6 +18,12 @@ func (c *Counter) IsExist(req interface{}) bool {
 	return !ok //设置成功->不存在->exist=false
 }
 
+func EmptyCounter() *Counter {
+	return &Counter{
+		Client: redis.NewClient(&redis.Options{}),
+	}
+}
+
 func NewCounter(addr, pwd string, db int64) (*Counter, error) {
 
 	rdb := redis.NewClient(&redis.Options{
